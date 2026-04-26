@@ -13,10 +13,7 @@
 }
 
 body {
-    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-    background-color: var(--preto-fundo);
-    color: var(--branco-puro);
-    overflow: hidden; /* Mantém tudo em uma única tela sem rolar */
+    overflow-y: auto; /* Libera a rolagem vertical apenas se precisar */
 }
 
 /* =========================================================
@@ -119,23 +116,11 @@ body {
     justify-content: center;
 }
 
+/* O vídeo precisa ignorar qualquer margem e cobrir tudo */
 #videoFundo {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    /* O segredo está aqui: largura e altura fixas em 100% da área visível */
-    width: 100vw; 
-    height: 100vh;
-    z-index: -2;
-    transform: translate(-50%, -50%);
-    
-    /* Esta linha faz o vídeo se comportar como uma foto de fundo, 
-       preenchendo tudo sem esticar as pessoas ou o caminhão */
-    object-fit: cover; 
-    
-    /* Garante que o vídeo não saia do lugar no iPhone/Android */
-    pointer-events: none;
-
+    width: 100vw !important;
+    height: 100vh !important;
+    object-fit: cover;
 }
 
 .video-overlay {
@@ -148,14 +133,17 @@ body {
     z-index: -1;
 }
 
+ /* No celular, o Grid não pode ter 3 colunas, tem que ser 1 por vez */
 .grid-conteudo {
-    display: grid;
-    grid-template-columns: 1fr 1.2fr 1fr; /* Centro um pouco maior */
-    gap: 20px;
-    padding: 0 5%;
+    grid-template-columns: 1fr; /* Transforma em uma única coluna */
+    gap: 10px;
+    padding: 0 20px; /* Margem pequena nas laterais */
     width: 100%;
-    max-width: 1600px;
-    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 }
 
 .bloco {
@@ -163,22 +151,14 @@ body {
     text-align: center;
 }
 
+/* Esconde ícones muito grandes que podem empurrar a tela */
 .bloco i {
-    font-size: 4rem;
-    color: var(--verde-neon);
-    margin-bottom: 20px;
-    filter: drop-shadow(0 0 10px rgba(57,0 255, 20, 0.6));
+    font-size: 2.5rem;
 }
 
+
 .bloco h2 {
-    font-size: 2rem;
-    margin-bottom: 15px;
-    text-transform: uppercase;
-    text-shadow: 2px 2px 100px rgba(255, 255, 255, 0.8),
-    -2px -2px 0 #27ae60,  
-     2px -2px 0 #27ae60,
-    -2px  2px 0 #27ae60,
-     2px  2px 0 #27ae60;
+    font-size: 1.5rem !important;
 }
 
 .bloco h2 span {
@@ -191,24 +171,17 @@ body {
 }
 
 .bloco p {
-    color: #2c3e50; /* Cinza quase preto para leitura perfeita */
-    font-weight: 600;
-    background: rgba(255, 255, 255, 0.6); /* Fundo branco sutil atrás do texto */
-    padding: 10px;
-    border-radius: 8px;
-    backdrop-filter: blur(5px); /* Efeito de vidro fosco */
+    font-size: 0.9rem;
+    max-width: 90%; /* Não deixa o texto bater nas bordas */
+    margin: 0 auto;
 }
 
 /* DESTAQUE CENTRAL LIXOZERO */
+/* Diminuir o tamanho dos textos para caber na tela pequena */
 .bloco-lixozero h1 {
-    font-size: 6rem;
-    color: #2c3e50;
-    text-shadow: 2px 2px 100px rgba(255, 255, 255, 0.8),
-    -2px -2px 0 #27ae60,  
-     2px -2px 0 #27ae60, 
-    -2px  2px 0 #27ae60, 
-     2px  2px 0 #27ae60; /* Brilho branco atrás */
+    font-size: 3rem !important; /* LixoZero menor no celular */
 }
+
 
 .bloco-lixozero h1 span {
     color: var(--verde-neon);
@@ -299,3 +272,18 @@ body {
     from { opacity: 0; transform: translateY(30px); }
     to { opacity: 1; transform: translateY(0); }
 }
+/* AJUSTES PARA CELULAR E TELAS PEQUENAS */
+@media (max-width: 768px) {
+    
+    body, html {
+        overflow-x: hidden; /* Proíbe o site de "dançar" para os lados */
+        width: 100%;
+        position: relative;
+    }
+/* AJUSTE PARA QUANDO O CELULAR ESTIVER DEITADO (HORIZONTAL) */
+@media (max-height: 500px) {
+    .secao-unica {
+        height: auto; /* Permite rolar se o conteúdo for maior que a tela deitada */
+        padding: 50px 0;
+    }
+
