@@ -1,0 +1,101 @@
+body {
+    background-color: #f8f9fa; /* Fundo cinza clarinho */
+    color: #2c3e50; /* Texto escuro para contraste */
+    font-family: 'Segoe UI', Roboto, sans-serif;
+    margin: 0;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 5%;
+    background: #ffffff;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05); /* Sombra leve */
+}
+
+h1 { font-weight: 800; color: #2c3e50;
+
+    text-shadow: 2px 2px 100px rgba(255, 255, 255, 0.8),
+    -2px -2px 0 #27ae60,  
+     2px -2px 0 #27ae60, 
+    -2px  2px 0 #27ae60, 
+     2px  2px 0 #27ae60;/* Brilho branco atrás */ 
+ }
+  
+h1 span { color: #ffffff; } /* O "Zero" em verde */
+
+nav a {
+    color: #2c3e50;
+    text-decoration: none;
+    margin-left: 25px;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+nav a:hover { color: #27ae60; }
+.container-form {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+
+.container {
+    padding: 60px 8%;
+    text-align: center;
+}
+
+.missao h2 { font-size: 2.5rem; margin-bottom: 20px; }
+.missao h2 span { color: #27ae60; }
+.missao p { 
+    color: #7f8c8d; 
+    max-width: 800px; 
+    margin: 0 auto 50px; 
+    font-size: 1.2rem;
+    line-height: 1.6;
+}
+
+/* Grid da Equipe */
+.equipe-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 25px;
+}
+
+/* Card do Membro */
+.card-membro {
+    background: #ffffff;
+    padding: 30px 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+    border: 1px solid #eee;
+    transition: 0.3s;
+}
+
+.card-membro:hover {
+    border-color: #27ae60;
+    transform: scale(1.03);
+    box-shadow: 0 10px 25px rgba(39, 174, 96, 0.1);
+}
+
+.avatar { 
+    font-size: 3rem; 
+    background: #f0fdf4; 
+    width: 80px; 
+    height: 80px; 
+    line-height: 80px; 
+    border-radius: 50%; 
+    margin: 0 auto 20px;
+}
+
+.card-membro h3 { 
+    font-size: 1.2rem; 
+    margin-bottom: 10px; 
+    color: #1a1a1a;
+}
+
+.card-membro p { 
+    font-size: 0.85rem; 
+    color: #95a5a6; 
+    font-weight: 500;
+}

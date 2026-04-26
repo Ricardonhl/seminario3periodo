@@ -1,0 +1,136 @@
+body { 
+    background: #f8f9fa; 
+    font-family: 'Segoe UI', sans-serif; 
+    display: flex; 
+    margin: 0; 
+    color: #2c3e50;
+}
+
+.sidebar { 
+    width: 260px; 
+    background: #ffffff; 
+    color: #2c3e50; 
+    height: 100vh; 
+    padding: 30px 20px; 
+    box-shadow: 2px 0 10px rgba(0,0,0,0.05);
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar h2 { font-size: 1.5rem; margin-bottom: 5px; }
+.sidebar h2 span { color: #27ae60; }
+.sidebar p { font-size: 0.8rem; color: #95a5a6; text-transform: uppercase; letter-spacing: 1px; }
+
+.conteudo { 
+    flex: 1; 
+    padding: 50px; 
+    overflow-y: auto;
+}
+
+h1 { font-size: 2rem; margin-bottom: 30px; }
+
+table { 
+    width: 100%; 
+    border-collapse: separate; 
+    border-spacing: 0 10px; /* Dá um espaçamento entre as linhas */
+}
+
+th { 
+    background: transparent; 
+    color: #7f8c8d; 
+    text-align: left; 
+    padding: 15px; 
+    font-size: 0.9rem;
+    text-transform: uppercase;
+}
+
+td { 
+    background: white; 
+    padding: 20px 15px; 
+    border-top: 1px solid #f0f0f0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+/* Arredondar as pontas das linhas da tabela */
+td:first-child { border-left: 1px solid #f0f0f0; border-radius: 10px 0 0 10px; }
+td:last-child { border-right: 1px solid #f0f0f0; border-radius: 0 10px 10px 0; }
+
+.status-pendente { 
+    background: #fff3e0; 
+    color: #e67e22; 
+    padding: 5px 12px; 
+    border-radius: 20px; 
+    font-size: 0.8rem; 
+    font-weight: bold; 
+}
+
+.status-resolvido { 
+    background: #e8f5e9; 
+    color: #27ae60; 
+    padding: 5px 12px; 
+    border-radius: 20px; 
+    font-size: 0.8rem; 
+    font-weight: bold; 
+}
+
+.btn-resolver { 
+    background: #27ae60; 
+    color: white; 
+    padding: 8px 15px; 
+    text-decoration: none; 
+    border-radius: 6px; 
+    font-size: 0.85rem; 
+    transition: 0.3s;
+}
+
+.btn-resolver:hover { background: #219150; }
+/* Estilo das Fotos na Tabela */
+.img-miniatura {
+    width: 80px;
+    height: 60px;
+    object-fit: cover; /* Corta a imagem para caber no quadradinho sem esticar */
+    border-radius: 8px;
+    border: 2px solid #eee;
+    transition: 0.3s;
+}
+
+.img-miniatura:hover {
+    transform: scale(1.1);
+    border-color: #27ae60;
+}
+
+.sem-foto {
+    color: #bdc3c7;
+    font-size: 0.8rem;
+    font-style: italic;
+}
+
+/* Badges de Status */
+.status-badge {
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+.status-badge.pendente {
+    background-color: #fff3e0;
+    color: #e67e22;
+}
+
+.status-badge.resolvido {
+    background-color: #e8f5e9;
+    color: #27ae60;
+}
+
+.td-desc {
+    max-width: 250px;
+    font-size: 0.9rem;
+    color: #7f8c8d;
+}
+
+.concluido {
+    color: #27ae60;
+    font-weight: bold;
+    font-size: 0.9rem;
+}

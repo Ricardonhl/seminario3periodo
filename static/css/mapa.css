@@ -1,0 +1,62 @@
+body {
+    background-color: #f8f9fa; /* Fundo cinza clarinho */
+    color: #2c3e50; /* Texto escuro para contraste */
+    font-family: 'Segoe UI', Roboto, sans-serif;
+    margin: 0;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 5%;
+    background: #ffffff;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05); /* Sombra leve */
+}
+
+h1 { font-weight: 800; color: #2c3e50;
+
+    text-shadow: 2px 2px 100px rgba(255, 255, 255, 0.8),
+    -2px -2px 0 #27ae60,  
+     2px -2px 0 #27ae60, 
+    -2px  2px 0 #27ae60, 
+     2px  2px 0 #27ae60;/* Brilho branco atrás */ 
+ }
+  
+h1 span { color: #ffffff; } /* O "Zero" em verde */
+
+nav a {
+    color: #2c3e50;
+    text-decoration: none;
+    margin-left: 25px;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+nav a:hover { color: #27ae60; }
+.container-form {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+
+.mapa-container {
+    padding: 50px 8%;
+    text-align: center;
+}
+
+.info-mapa h2 { font-size: 2.5rem; margin-bottom: 15px; }
+.info-mapa h2 span { color: #27ae60; }
+.info-mapa p { color: black; max-width: 700px; margin: 0 auto 40px; font-size: 1.1rem; }
+
+.mapa-frame {
+    background: white;
+    padding: 15px;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+    overflow: hidden;
+}
+
+iframe {
+    border-radius: 10px;
+}

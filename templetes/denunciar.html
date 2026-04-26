@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>LixoZero - Reportar</title>
+    <link rel="stylesheet" href="../static/css/denunciar.css">
+    <link rel="stylesheet" href="../static/css/whatsapp.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <header>
+        <h1>Lixo<span>Zero</span></h1>
+        <nav>
+            <a href="./index.html">Home</a>
+    <a href="./mapa.html">Mapa</a>
+    <a href="./coletas.html">Super Coletas</a>
+    <a href="./denunciar.html">Denunciar</a>
+    <a href="./sobre.html">Sobre</a>
+    <a href="./contato.html">Contato</a>
+        </nav>
+    </header>
+
+    <main class="container-form">
+        <div class="box-denuncia">
+            <h2>Reportar <span>Lixo Irregular</span></h2>
+            
+            <form action="/denunciar" method="POST" enctype="multipart/form-data">
+                <div class="campo">
+                    <label>Localização ou Ponto de Referência</label>
+                    <input type="text" name="local" placeholder="Ex: Rua das Flores, próximo ao mercado" required>
+                </div>
+
+                <div class="campo">
+                    <label>Anexar Prova (Foto)</label>
+                    <input type="file" name="foto" accept="image/*" class="file-input">
+                </div>
+
+                <div class="campo">
+                    <label>Descreva a Situação</label>
+                    <textarea name="descricao" rows="8" placeholder="Conte-nos o que está acontecendo para ajudarmos na coleta..." required></textarea>
+                </div>
+
+                <div class="btn-group">
+                    <button type="submit" class="btn-enviar">Enviar Denúncia</button>
+                    <a href="../templetes/mapa.html" class="btn-mapa">📍 Marcar no Google Maps</a>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <a href="https://www.whatsapp.com/?lang=pt_BR" class="btn-whatsapp-flutuante" target="_blank">
+    <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+</body>
+</html>

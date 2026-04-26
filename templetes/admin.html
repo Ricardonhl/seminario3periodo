@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>LixoZero - Painel Administrativo</title>
+    <link rel="stylesheet" href="../static/css/admin.css">
+</head>
+<body>
+    <div class="sidebar">
+        <h2>Lixo<span>Zero</span></h2>
+        <p>Gestão Municipal</p>
+        <nav class="nav-admin">
+            <a href="/">Voltar ao Site</a>
+            <a href="/admin" class="active">Denúncias</a>
+        </nav>
+    </div>
+
+    <main class="conteudo">
+        <header class="admin-header">
+            <h1>Painel de <span>Controle</span></h1>
+            <p>Monitore e gerencie os relatos de lixo irregular em Sítio Novo.</p>
+        </header>
+
+        <section class="tabela-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Evidência</th>
+                        <th>Localização</th>
+                        <th>Descrição</th>
+                        <th>Status</th>
+                        <th>Ação</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for d in denuncias %}
+                    <tr>
+                        <td class="td-foto">
+                            {% if d.foto %}
+                                <a href="{{ url_for('static', filename='uploads/' + d.foto) }}" target="_blank">
+                                    <img src="{{ url_for('static', filename='uploads/' + d.foto) }}" alt="Foto da denúncia" class="img-miniatura">
+                                </a>
+                            {% else %}
+                                <span class="sem-foto">Sem anexo</span>
+                            {% endif %}
+                        </td>
+                        <td><strong>{{ d.local }}</strong></td>
+                        <td class="td-desc">{{ d.descricao }}</td>
+                        <td>
+                            <span class="status-badge {{ d.status.lower() }}">
+                                {{ d.status }}
+                            </span>
+                        </td>
+                        <td>
+                            {% if d.status == 'Pendente' %}
+                                <a href="/resolver/{{ d.id }}" class="btn-resolver">Concluir Coleta</a>
+                            {% else %}
+                                <span class="concluido">✅ Coletado</span>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </section>
+    </main>
+</body>
+</html>

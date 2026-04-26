@@ -1,0 +1,296 @@
+:root {
+    --verde-neon: #27ae60;      /* Verde Elétrico com muita vida */
+    --branco-puro: #ffffff;    /* Máxima legibilidade */
+    --preto-fundo: #000000;    /* Fundo total para destacar o neon */
+    --amarelo-alerta: #ffdb19; /* Para botões de ação */
+    --cinza-claro: #f0f0f0;    /* Para parágrafos */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--preto-fundo);
+    color: var(--branco-puro);
+    overflow: hidden; /* Mantém tudo em uma única tela sem rolar */
+}
+
+/* =========================================================
+   MENU LATERAL (ESTILO SPACEDESK)
+   ========================================================= */
+.menu-overlay {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 2000;
+    top: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.0);
+    border-right: 3px solid var(--verde-neon);
+    overflow-x: hidden;
+    transition: 0.5s;
+}
+
+.menu-content {
+    display: flex;
+    flex-direction: row;
+    justify-content: first baseline;
+    position: relative;
+    top: 2%;
+    width: 100%;
+    gap: 40px;
+
+}
+
+.menu-content a {
+    padding: 15px;
+    text-decoration: none;
+    font-size: 20px;
+    color: black;
+    text-shadow: 
+    -2px -2px 0 rgba(255, 255, 255, 0.8),  
+     2px -2px 0 rgba(255, 255, 255, 0.8),
+    -2px  2px 0 rgba(255, 255, 255, 0.8),
+     2px  2px 0 rgba(255, 255, 255, 0.8);
+    display: block;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.menu-content a:hover {
+    padding: 15px;
+    text-decoration: none;
+    font-size: 20px;
+    color: black;
+    text-shadow: 
+    -2px -2px 0 #27ae60,  
+     2px -2px 0 #27ae60,
+    -2px  2px 0 #27ae60,
+     2px  2px 0 #27ae60;
+    display: block;
+    font-weight: bold;
+
+}
+
+.closebtn {
+    position: absolute;
+    top: 20px;
+    right: 45px;
+    font-size: 60px;
+    color: var(--verde-neon);
+    text-decoration: none;
+}
+
+.open-btn {
+    position: fixed;
+    top: 30px;
+    right: 30px;
+    z-index: 1000;
+    cursor: pointer;
+    color: var(--branco-puro);
+    font-weight: bold;
+    background-color: black;
+    padding: 10px 20px;
+    border: 1px solid var(--verde-neon);
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+.open-btn:hover {
+    background-color: var(--verde-neon);
+    color: black;
+}
+
+/* =========================================================
+   LAYOUT DE IMPACTO (GRID DE 3 COLUNAS)
+   ========================================================= */
+.secao-unica {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#videoFundo {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -2;
+    transform: translate(-50%, -50%);
+    object-fit: cover;
+    /* Linha mágica para nitidez em monitores grandes */
+    image-rendering: -webkit-optimize-contrast; 
+    image-rendering: crisp-edges;
+}
+
+.video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(255,255,255,0.2), rgba(0,0,0,0.4));
+    z-index: -1;
+}
+
+.grid-conteudo {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr 1fr; /* Centro um pouco maior */
+    gap: 20px;
+    padding: 0 5%;
+    width: 100%;
+    max-width: 1600px;
+    z-index: 1;
+}
+
+.bloco {
+    padding: 20px;
+    text-align: center;
+}
+
+.bloco i {
+    font-size: 4rem;
+    color: var(--verde-neon);
+    margin-bottom: 20px;
+    filter: drop-shadow(0 0 10px rgba(57,0 255, 20, 0.6));
+}
+
+.bloco h2 {
+    font-size: 2rem;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    text-shadow: 2px 2px 100px rgba(255, 255, 255, 0.8),
+    -2px -2px 0 #27ae60,  
+     2px -2px 0 #27ae60,
+    -2px  2px 0 #27ae60,
+     2px  2px 0 #27ae60;
+}
+
+.bloco h2 span {
+    color: var(--verde-neon);
+    text-shadow: 
+    -2px -2px 0 rgba(255, 255, 255, 0.8),  
+     2px -2px 0 rgba(255, 255, 255, 0.8),
+    -2px  2px 0 rgba(255, 255, 255, 0.8),
+     2px  2px 0 rgba(255, 255, 255, 0.8);
+}
+
+.bloco p {
+    color: #2c3e50; /* Cinza quase preto para leitura perfeita */
+    font-weight: 600;
+    background: rgba(255, 255, 255, 0.6); /* Fundo branco sutil atrás do texto */
+    padding: 10px;
+    border-radius: 8px;
+    backdrop-filter: blur(5px); /* Efeito de vidro fosco */
+}
+
+/* DESTAQUE CENTRAL LIXOZERO */
+.bloco-lixozero h1 {
+    font-size: 6rem;
+    color: #2c3e50;
+    text-shadow: 2px 2px 100px rgba(255, 255, 255, 0.8),
+    -2px -2px 0 #27ae60,  
+     2px -2px 0 #27ae60, 
+    -2px  2px 0 #27ae60, 
+     2px  2px 0 #27ae60; /* Brilho branco atrás */
+}
+
+.bloco-lixozero h1 span {
+    color: var(--verde-neon);
+    text-shadow: 
+    -2px -2px 0 rgba(255, 255, 255, 0.8),  
+     2px -2px 0 rgba(255, 255, 255, 0.8),
+    -2px  2px 0 rgba(255, 255, 255, 0.8),
+     2px  2px 0 rgba(255, 255, 255, 0.8);
+}
+
+.tagline {
+    font-weight: bold;
+    color: var(--verde-neon);
+    letter-spacing: 4px;
+    font-size: 0.9rem;
+    margin-bottom: 40px;
+}
+
+/* BOTÕES VIVOS */
+.botoes-acao {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+}
+
+.btn-primary {
+    border: 2px solid var(--branco-puro);
+    background-color: var(--verde-neon);
+    color: #2c3e50;
+    text-decoration: none;
+    padding: 10px 40px;
+    font-weight: 900;
+    border-radius: 50px;
+    font-size: 1.2rem;
+    transition: 0.3s;
+    box-shadow: 0 0 20px #27ae60;
+}
+
+.btn-primary:hover {
+    transform: scale(1.1);
+    background-color: white;
+}
+
+.btn-secondary {
+    border: 2px solid var(--branco-puro);
+    background-color: var(--verde-neon);
+    color: #2c3e50;
+    text-decoration: none;
+    padding: 10px 40px;
+    font-weight: 900;
+    border-radius: 50px;
+    font-size: 1.2rem;
+    transition: 0.3s;
+    box-shadow: 0 0 20px #27ae60;
+}
+
+.btn-secondary:hover {
+    background-color: var(--branco-puro);
+    color: #2c3e50;
+}
+
+/* WHATSAPP */
+.btn-whatsapp-flutuante {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background-color: #27ae60;
+    color: white;
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 35px;
+    text-decoration: none;
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+    z-index: 1000;
+}
+
+/* ANIMAÇÃO DE ENTRADA */
+.scroll-reveal {
+    animation: reveal 5.0s ease-out forwards;
+}
+
+@keyframes reveal {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
