@@ -136,9 +136,6 @@ body {
     /* Garante que o vídeo não saia do lugar no iPhone/Android */
     pointer-events: none;
 
-    /* Linha mágica para nitidez em monitores grandes */
-    image-rendering: -webkit-optimize-contrast; 
-    image-rendering: crisp-edges;
 }
 
 .video-overlay {
