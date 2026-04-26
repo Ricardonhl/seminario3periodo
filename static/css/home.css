@@ -108,10 +108,12 @@ body {
 /* =========================================================
    LAYOUT DE IMPACTO (GRID DE 3 COLUNAS)
    ========================================================= */
+/* Ajuste extra para garantir que a seção não tenha "folga" nas laterais */
 .secao-unica {
     position: relative;
     height: 100vh;
     width: 100%;
+    overflow: hidden; /* Corta qualquer coisa que tente vazar para o lado */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -121,13 +123,19 @@ body {
     position: absolute;
     top: 50%;
     left: 50%;
-    min-width: 100%;
-    min-height: 100%;
-    width: auto;
-    height: auto;
+    /* O segredo está aqui: largura e altura fixas em 100% da área visível */
+    width: 100vw; 
+    height: 100vh;
     z-index: -2;
     transform: translate(-50%, -50%);
-    object-fit: cover;
+    
+    /* Esta linha faz o vídeo se comportar como uma foto de fundo, 
+       preenchendo tudo sem esticar as pessoas ou o caminhão */
+    object-fit: cover; 
+    
+    /* Garante que o vídeo não saia do lugar no iPhone/Android */
+    pointer-events: none;
+
     /* Linha mágica para nitidez em monitores grandes */
     image-rendering: -webkit-optimize-contrast; 
     image-rendering: crisp-edges;
