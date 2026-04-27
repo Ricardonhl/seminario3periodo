@@ -31,29 +31,28 @@ body {
     z-index: 2000;
     top: 0;
     right: 0;
-    background-color: rgba(0, 0, 0, 0.9); /* Escurecido para leitura */
+    background-color: rgba(0, 0, 0, 0.0); /* Escurecido para leitura */
     border-left: 3px solid var(--verde-neon);
     overflow-x: hidden;
     transition: 0.5s;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+
 }
 
 .menu-content {
     display: flex;
     flex-direction: row; /* Horizontal como você pediu */
-    gap: 30px;
-    padding: 20px;
+    gap: 100px;
+    padding: 10px;
 }
 
 .menu-content a {
     text-decoration: none;
-    font-size: 18px;
+    font-size: 15px;
     color: var(--branco-puro);
     font-weight: bold;
     text-shadow: 1px 1px 2px #000;
     transition: 0.3s;
+    padding: 20px;
 }
 
 .menu-content a:hover {
@@ -63,13 +62,13 @@ body {
 
 .open-btn {
     position: fixed;
-    top: 20px;
+    top: 40px;
     right: 20px;
     z-index: 1000;
     cursor: pointer;
     color: var(--branco-puro);
     background-color: black;
-    padding: 8px 15px;
+    padding: 5px 10px;
     border: 1px solid var(--verde-neon);
     border-radius: 5px;
 }
