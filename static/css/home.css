@@ -1,9 +1,9 @@
 :root {
-    --verde-neon: #27ae60;      /* Verde Elétrico com muita vida */
-    --branco-puro: #ffffff;    /* Máxima legibilidade */
-    --preto-fundo: #000000;    /* Fundo total para destacar o neon */
-    --amarelo-alerta: #ffdb19; /* Para botões de ação */
-    --cinza-claro: #f0f0f0;    /* Para parágrafos */
+    --verde-neon: #27ae60;
+    --branco-puro: #ffffff;
+    --preto-fundo: #000000;
+    --amarelo-alerta: #ffdb19;
+    --cinza-claro: #f0f0f0;
 }
 
 * {
@@ -12,15 +12,17 @@
     box-sizing: border-box;
 }
 
+/* CORREÇÃO 1: Removido overflow:hidden fixo para permitir rolagem no celular */
 body {
     font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
     background-color: var(--preto-fundo);
     color: var(--branco-puro);
-    overflow: hidden; /* Mantém tudo em uma única tela sem rolar */
+    width: 100%;
+    overflow-x: hidden; /* Tranca apenas a lateral */
 }
 
 /* =========================================================
-   MENU LATERAL (ESTILO SPACEDESK)
+   MENU LATERAL (CORRIGIDO)
    ========================================================= */
 .menu-overlay {
     height: 100%;
@@ -29,130 +31,89 @@ body {
     z-index: 2000;
     top: 0;
     right: 0;
-    background-color: rgba(0, 0, 0, 0.0);
-    border-right: 3px solid var(--verde-neon);
+    background-color: rgba(0, 0, 0, 0.9); /* Escurecido para leitura */
+    border-left: 3px solid var(--verde-neon);
     overflow-x: hidden;
     transition: 0.5s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .menu-content {
     display: flex;
-    flex-direction: row;
-    justify-content: first baseline;
-    position: relative;
-    top: 2%;
-    width: 100%;
-    gap: 40px;
-
+    flex-direction: row; /* Horizontal como você pediu */
+    gap: 30px;
+    padding: 20px;
 }
 
 .menu-content a {
-    padding: 15px;
     text-decoration: none;
-    font-size: 20px;
-    color: black;
-    text-shadow: 
-    -2px -2px 0 rgba(255, 255, 255, 0.8),  
-     2px -2px 0 rgba(255, 255, 255, 0.8),
-    -2px  2px 0 rgba(255, 255, 255, 0.8),
-     2px  2px 0 rgba(255, 255, 255, 0.8);
-    display: block;
+    font-size: 18px;
+    color: var(--branco-puro);
     font-weight: bold;
+    text-shadow: 1px 1px 2px #000;
     transition: 0.3s;
 }
 
 .menu-content a:hover {
-    padding: 15px;
-    text-decoration: none;
-    font-size: 20px;
-    color: black;
-    text-shadow: 
-    -2px -2px 0 #27ae60,  
-     2px -2px 0 #27ae60,
-    -2px  2px 0 #27ae60,
-     2px  2px 0 #27ae60;
-    display: block;
-    font-weight: bold;
-
-}
-
-.closebtn {
-    position: absolute;
-    top: 20px;
-    right: 45px;
-    font-size: 60px;
     color: var(--verde-neon);
-    text-decoration: none;
+    transform: scale(1.1);
 }
 
 .open-btn {
     position: fixed;
-    top: 30px;
-    right: 30px;
+    top: 20px;
+    right: 20px;
     z-index: 1000;
     cursor: pointer;
     color: var(--branco-puro);
-    font-weight: bold;
     background-color: black;
-    padding: 10px 20px;
+    padding: 8px 15px;
     border: 1px solid var(--verde-neon);
     border-radius: 5px;
-    transition: 0.3s;
-}
-
-.open-btn:hover {
-    background-color: var(--verde-neon);
-    color: black;
 }
 
 /* =========================================================
-   LAYOUT DE IMPACTO (GRID DE 3 COLUNAS)
+   LAYOUT E VÍDEO (CORRIGIDO PARA PREENCHER TUDO)
    ========================================================= */
-/* Ajuste extra para garantir que a seção não tenha "folga" nas laterais */
 .secao-unica {
     position: relative;
-    height: 100vh;
+    min-height: 100vh; /* min-height permite crescer no celular */
     width: 100%;
-    overflow: hidden; /* Corta qualquer coisa que tente vazar para o lado */
+    overflow: hidden;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
 #videoFundo {
-    position: absolute;
+    position: fixed; /* Fixed garante que ele não fuja na rolagem */
     top: 50%;
     left: 50%;
-    /* O segredo está aqui: largura e altura fixas em 100% da área visível */
-    width: 100vw; 
+    width: 100vw;
     height: 100vh;
     z-index: -2;
     transform: translate(-50%, -50%);
-    
-    /* Esta linha faz o vídeo se comportar como uma foto de fundo, 
-       preenchendo tudo sem esticar as pessoas ou o caminhão */
-    object-fit: cover; 
-    
-    /* Garante que o vídeo não saia do lugar no iPhone/Android */
+    object-fit: cover; /* Faz a mágica de preencher sem sobras */
     pointer-events: none;
-
 }
 
 .video-overlay {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(to bottom, rgba(255,255,255,0.2), rgba(0,0,0,0.4));
+    background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.6));
     z-index: -1;
 }
 
 .grid-conteudo {
     display: grid;
-    grid-template-columns: 1fr 1.2fr 1fr; /* Centro um pouco maior */
+    grid-template-columns: 1fr 1.2fr 1fr;
     gap: 20px;
-    padding: 0 5%;
+    padding: 20px 5%;
     width: 100%;
     max-width: 1600px;
     z-index: 1;
@@ -164,199 +125,69 @@ body {
 }
 
 .bloco i {
-    font-size: 4rem;
+    font-size: 3.5rem;
     color: var(--verde-neon);
-    margin-bottom: 20px;
-    filter: drop-shadow(0 0 10px rgba(57,0 255, 20, 0.6));
+    margin-bottom: 15px;
 }
 
 .bloco h2 {
-    font-size: 2rem;
-    margin-bottom: 15px;
+    font-size: 1.8rem;
+    margin-bottom: 10px;
     text-transform: uppercase;
-    text-shadow: 2px 2px 100px rgba(255, 255, 255, 0.8),
-    -2px -2px 0 #27ae60,  
-     2px -2px 0 #27ae60,
-    -2px  2px 0 #27ae60,
-     2px  2px 0 #27ae60;
-}
-
-.bloco h2 span {
-    color: var(--verde-neon);
-    text-shadow: 
-    -2px -2px 0 rgba(255, 255, 255, 0.8),  
-     2px -2px 0 rgba(255, 255, 255, 0.8),
-    -2px  2px 0 rgba(255, 255, 255, 0.8),
-     2px  2px 0 rgba(255, 255, 255, 0.8);
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
 }
 
 .bloco p {
-    color: #2c3e50; /* Cinza quase preto para leitura perfeita */
+    color: #1a1a1a;
     font-weight: 600;
-    background: rgba(255, 255, 255, 0.6); /* Fundo branco sutil atrás do texto */
-    padding: 10px;
-    border-radius: 8px;
-    backdrop-filter: blur(5px); /* Efeito de vidro fosco */
+    background: rgba(255, 255, 255, 0.8);
+    padding: 15px;
+    border-radius: 12px;
+    backdrop-filter: blur(5px);
 }
 
-/* DESTAQUE CENTRAL LIXOZERO */
 .bloco-lixozero h1 {
-    font-size: 6rem;
-    color: #2c3e50;
-    text-shadow: 2px 2px 100px rgba(255, 255, 255, 0.8),
-    -2px -2px 0 #27ae60,  
-     2px -2px 0 #27ae60, 
-    -2px  2px 0 #27ae60, 
-     2px  2px 0 #27ae60; /* Brilho branco atrás */
+    font-size: 5rem;
+    color: var(--branco-puro);
+    text-shadow: 3px 3px 10px rgba(0,0,0,0.9);
 }
 
-.bloco-lixozero h1 span {
-    color: var(--verde-neon);
-    text-shadow: 
-    -2px -2px 0 rgba(255, 255, 255, 0.8),  
-     2px -2px 0 rgba(255, 255, 255, 0.8),
-    -2px  2px 0 rgba(255, 255, 255, 0.8),
-     2px  2px 0 rgba(255, 255, 255, 0.8);
-}
+.bloco-lixozero h1 span { color: var(--verde-neon); }
 
-.tagline {
-    font-weight: bold;
-    color: var(--verde-neon);
-    letter-spacing: 4px;
-    font-size: 0.9rem;
-    margin-bottom: 40px;
-}
-
-/* BOTÕES VIVOS */
-.botoes-acao {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    align-items: center;
-}
-
-.btn-primary {
-    border: 2px solid var(--branco-puro);
+.btn-primary, .btn-secondary {
+    display: inline-block;
     background-color: var(--verde-neon);
-    color: #2c3e50;
-    text-decoration: none;
-    padding: 10px 40px;
-    font-weight: 900;
-    border-radius: 50px;
-    font-size: 1.2rem;
-    transition: 0.3s;
-    box-shadow: 0 0 20px #27ae60;
-}
-
-.btn-primary:hover {
-    transform: scale(1.1);
-    background-color: white;
-}
-
-.btn-secondary {
-    border: 2px solid var(--branco-puro);
-    background-color: var(--verde-neon);
-    color: #2c3e50;
-    text-decoration: none;
-    padding: 10px 40px;
-    font-weight: 900;
-    border-radius: 50px;
-    font-size: 1.2rem;
-    transition: 0.3s;
-    box-shadow: 0 0 20px #27ae60;
-}
-
-.btn-secondary:hover {
-    background-color: var(--branco-puro);
-    color: #2c3e50;
-}
-
-/* WHATSAPP */
-.btn-whatsapp-flutuante {
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    background-color: #27ae60;
     color: white;
-    width: 65px;
-    height: 65px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 35px;
     text-decoration: none;
-    box-shadow: 0 0 20px rgba(0,0,0,0.5);
-    z-index: 1000;
+    padding: 12px 35px;
+    font-weight: bold;
+    border-radius: 50px;
+    margin-top: 10px;
+    transition: 0.3s;
 }
 
-/* ANIMAÇÃO DE ENTRADA */
-.scroll-reveal {
-    animation: reveal 5.0s ease-out forwards;
-}
-
-@keyframes reveal {
-    from { opacity: 0; transform: translateY(30px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-/* AJUSTES PARA CELULAR E TELAS PEQUENAS */
-@media (max-width: 768px) {
-    
-    body, html {
-        overflow-x: hidden; /* Proíbe o site de "dançar" para os lados */
-        width: 100%;
-        position: relative;
-    }
-
-    /* O vídeo precisa ignorar qualquer margem e cobrir tudo */
-    #videoFundo {
-        width: 100vw !important;
-        height: 100vh !important;
-        object-fit: cover;
-    }
-
-    /* No celular, o Grid não pode ter 3 colunas, tem que ser 1 por vez */
+/* =========================================================
+   RESPONSIVIDADE (A CHAVE PARA O CELULAR)
+   ========================================================= */
+@media (max-width: 900px) {
     .grid-conteudo {
-        grid-template-columns: 1fr; /* Transforma em uma única coluna */
-        gap: 10px;
-        padding: 0 20px; /* Margem pequena nas laterais */
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
+        grid-template-columns: 1fr; /* Um embaixo do outro */
+        padding-top: 80px; /* Espaço para o botão menu */
     }
 
-    /* Diminuir o tamanho dos textos para caber na tela pequena */
-    .bloco-lixozero h1 {
-        font-size: 3rem !important; /* LixoZero menor no celular */
-    }
-
-    .bloco h2 {
-        font-size: 1.5rem !important;
-    }
-
-    .bloco p {
-        font-size: 0.9rem;
-        max-width: 90%; /* Não deixa o texto bater nas bordas */
-        margin: 0 auto;
-    }
-
-    /* Esconde ícones muito grandes que podem empurrar a tela */
-    .bloco i {
-        font-size: 2.5rem;
-    }
-}
-
-/* AJUSTE PARA QUANDO O CELULAR ESTIVER DEITADO (HORIZONTAL) */
-@media (max-height: 500px) {
-    .secao-unica {
-        height: auto; /* Permite rolar se o conteúdo for maior que a tela deitada */
-        padding: 50px 0;
-    }
+    .bloco-lixozero h1 { font-size: 3rem; }
     
+    .secao-unica {
+        height: auto;
+        padding-bottom: 50px;
+    }
+
     body {
-        overflow-y: auto; /* Libera a rolagem vertical apenas se precisar */
+        overflow-y: auto; /* Permite rolar para ver os 3 blocos */
+    }
+
+    .menu-content {
+        flex-direction: column; /* No celular o menu volta a ser lista */
+        text-align: center;
     }
 }
