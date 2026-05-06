@@ -184,9 +184,4 @@ body {
     body {
         overflow-y: auto; /* Permite rolar para ver os 3 blocos */
     }
-
-    .menu-content {
-        flex-direction: column; /* No celular o menu volta a ser lista */
-        text-align: center;
-    }
 }
