@@ -18,7 +18,8 @@ body {
     background-color: var(--preto-fundo);
     color: var(--branco-puro);
     width: 100%;
-    overflow-x: hidden; /* Tranca apenas a lateral */
+    overflow-x: hidden;
+    /* Tranca apenas a lateral */
 }
 
 /* =========================================================
@@ -31,7 +32,8 @@ body {
     z-index: 2000;
     top: 0;
     right: 0;
-    background-color: rgba(0, 0, 0, 0.0); /* Escurecido para leitura */
+    background-color: rgba(0, 0, 0, 0.0);
+    /* Escurecido para leitura */
     border-left: 3px solid var(--verde-neon);
     overflow-x: hidden;
     transition: 0.5s;
@@ -40,9 +42,15 @@ body {
 
 .menu-content {
     display: flex;
-    flex-direction: row; /* Horizontal como você pediu */
-    gap: 100px;
-    padding: 10px;
+    flex-direction: row;
+    /* Horizontal como você pediu */
+    justify-content: flex-end;
+    align-items: center;
+    position: relative;
+    gap: 2px;
+    width: 100%;
+    padding-right: 120px;
+    gap: 30px;
 }
 
 .menu-content a {
@@ -62,9 +70,9 @@ body {
 
 .open-btn {
     position: fixed;
-    top: 40px;
-    right: 20px;
-    z-index: 1000;
+    top: 30px;
+    right: 30px;
+    z-index: 3000;
     cursor: pointer;
     color: var(--branco-puro);
     background-color: black;
@@ -73,12 +81,34 @@ body {
     border-radius: 5px;
 }
 
+/* Garante que o conteúdo comece invisível */
+.scroll-reveal {
+    opacity: 0;
+    animation: reveal 3.0s ease-out forwards;
+    /* Adiciona um pequeno atraso para o vídeo carregar primeiro */
+    animation-delay: 2s;
+}
+
+@keyframes reveal {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+        /* Surge de baixo para cima */
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 /* =========================================================
    LAYOUT E VÍDEO (CORRIGIDO PARA PREENCHER TUDO)
    ========================================================= */
 .secao-unica {
     position: relative;
-    min-height: 100vh; /* min-height permite crescer no celular */
+    min-height: 100vh;
+    /* min-height permite crescer no celular */
     width: 100%;
     overflow: hidden;
     display: flex;
@@ -87,14 +117,16 @@ body {
 }
 
 #videoFundo {
-    position: fixed; /* Fixed garante que ele não fuja na rolagem */
+    position: fixed;
+    /* Fixed garante que ele não fuja na rolagem */
     top: 50%;
     left: 50%;
     width: 100vw;
     height: 100vh;
     z-index: -2;
     transform: translate(-50%, -50%);
-    object-fit: cover; /* Faz a mágica de preencher sem sobras */
+    object-fit: cover;
+    /* Faz a mágica de preencher sem sobras */
     pointer-events: none;
 }
 
@@ -104,7 +136,7 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.6));
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.6));
     z-index: -1;
 }
 
@@ -133,7 +165,7 @@ body {
     font-size: 1.8rem;
     margin-bottom: 10px;
     text-transform: uppercase;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
 }
 
 .bloco p {
@@ -148,12 +180,15 @@ body {
 .bloco-lixozero h1 {
     font-size: 5rem;
     color: var(--branco-puro);
-    text-shadow: 3px 3px 10px rgba(0,0,0,0.9);
+    text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.9);
 }
 
-.bloco-lixozero h1 span { color: var(--verde-neon); }
+.bloco-lixozero h1 span {
+    color: var(--verde-neon);
+}
 
-.btn-primary, .btn-secondary {
+.btn-primary,
+.btn-secondary {
     display: inline-block;
     background-color: var(--verde-neon);
     color: white;
@@ -165,23 +200,45 @@ body {
     transition: 0.3s;
 }
 
-/* =========================================================
-   RESPONSIVIDADE (A CHAVE PARA O CELULAR)
-   ========================================================= */
-@media (max-width: 900px) {
-    .grid-conteudo {
-        grid-template-columns: 1fr; /* Um embaixo do outro */
-        padding-top: 80px; /* Espaço para o botão menu */
+/* AJUSTES ESPECÍFICOS PARA O MENU NO CELULAR */
+@media (max-width: 768px) {
+
+    .menu-content {
+        /* Mudamos para wrap para que, se não couber, ele crie uma segunda linha */
+        flex-wrap: wrap;
+        justify-content: center;
+        /* Centraliza no celular para facilitar o toque */
+        padding-right: 20px;
+        /* Remove aquele recuo grande da direita */
+        gap: 10px;
+        /* Diminui o espaço entre os nomes */
+        top: 5%;
+        /* Ajusta a altura inicial */
     }
 
-    .bloco-lixozero h1 { font-size: 3rem; }
-    
-    .secao-unica {
-        height: auto;
-        padding-bottom: 50px;
+    .menu-content a {
+        /* Diminuímos o tamanho da letra de 20px para 14px */
+        font-size: 14px !important;
+        padding: 8px 10px;
+        /* Diminui a área em volta da letra */
     }
 
-    body {
-        overflow-y: auto; /* Permite rolar para ver os 3 blocos */
+    /* O botão de fechar circular também precisa de um ajuste para não empurrar tudo */
+    .closebtn-circular {
+        width: 45px;
+        height: 45px;
+        font-size: 25px !important;
+        margin-left: 0;
+    }
+}
+
+/* AJUSTE PARA CELULAR NA HORIZONTAL (PAISAGEM) */
+@media (max-height: 500px) and (max-width: 900px) {
+    .menu-content {
+        gap: 15px;
+    }
+
+    .menu-content a {
+        font-size: 13px !important;
     }
 }
