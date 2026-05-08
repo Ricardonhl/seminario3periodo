@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+    
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=no">
@@ -8,7 +9,11 @@
     <link rel="stylesheet" href="static/css/whatsapp.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
+    
 <body>
+    <div class="grid-conteudo scroll-reveal">
+
+    </div>
 
     <div id="menuLateral" class="menu-overlay">
     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
@@ -64,20 +69,21 @@
     </section>
 
     <a href="https://www.whatsapp.com/?lang=pt_BR" class="btn-whatsapp-flutuante" target="_blank">
-    <i class="fa-brands fa-whatsapp"></i>
+        <i class="fa-brands fa-whatsapp"></i>
     </a>
 
     <script>
-    /* Função para Abrir: a largura vai para 100% vindo da direita */
-    function openNav() {
-        document.getElementById("menuLateral").style.width = "100%";
-    }
+        function toggleNav() {
+            const menu = document.getElementById("menuLateral");
 
-    /* Função para Fechar: a largura volta para 0 na direita */
-    function closeNav() {
-        document.getElementById("menuLateral").style.width = "0";
-    }
-</script>
+            // Verifica se o menu está com largura 100% (aberto)
+            if (menu.style.width === "100%") {
+                menu.style.width = "0"; // Se estiver aberto, fecha
+            } else {
+                menu.style.width = "100%"; // Se estiver fechado, abre
+            }
+        }
+    </script>
 
 </body>
 </html>
