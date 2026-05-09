@@ -1,39 +1,40 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
+    
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=no">
     <title>LixoZero - Solução Inteligente para Sítio Novo</title>
-    <link rel="stylesheet" href="./static/css/home.css">
+    <link rel="stylesheet" href="static/css/home.css">
     <link rel="stylesheet" href="static/css/whatsapp.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
-
+    
 <body>
     <div class="grid-conteudo scroll-reveal">
 
     </div>
 
     <div id="menuLateral" class="menu-overlay">
-        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-
-        <div class="menu-content">
-            <a href="./index.html">HOME</a>
-            <a href="templetes/mapa.html">MAPA INTERATIVO</a>
-            <a href="templetes/coletas.html">SUPER COLETAS</a>
-            <a href="templetes/denunciar.html">DENUNCIAR</a>
-            <a href="templetes/sobre.html">SOBRE NÓS</a>
-            <a href="templetes/admin.html">LOGIN</a>
-            <a href="templetes/contato.html">CONTATO</a>
-        </div>
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    
+    <div class="menu-content">
+        <a href="index.html">HOME</a>
+        <a href="templetes/mapa.html">MAPA INTERATIVO</a>
+        <a href="templetes/coletas.html">SUPER COLETAS</a>
+        <a href="templetes/denunciar.html">DENUNCIAR</a>
+        <a href="templetes/sobre.html">SOBRE NÓS</a>
+        <a href="templetes/admin.html">LOGIN</a>
+        <a href="templetes/contato.html">CONTATO</a>
     </div>
+</div>
 
-    <span class="open-btn" onclick="toggleNav()">
-        <i class="fa-solid fa-bars"></i> MENU
-    </span>
+<span class="open-btn" onclick="openNav()">
+    <i class="fa-solid fa-bars"></i> MENU
+</span>
+
     <section class="secao-unica">
-
+        
         <video autoplay muted loop playsinline id="videoFundo">
             <source src="static/videos/video.mp4" type="video/mp4">
             Seu navegador não suporta vídeos.
@@ -41,7 +42,13 @@
 
         <div class="video-overlay"></div>
 
-        <div class="grid-conteudo carrossel-mobile">
+        <div class="grid-conteudo">
+            
+            <div class="bloco bloco-monitoramento scroll-reveal">
+                <i class="fa-solid fa-tower-broadcast"></i>
+                <h2>Monitoramento <span>24h</span></h2>
+                <p>Acompanhe a limpeza urbana em tempo real. Nossa plataforma geolocaliza os pontos críticos de Sítio Novo do Tocantins.</p>
+            </div>
 
             <div class="bloco bloco-lixozero scroll-reveal">
                 <h1>Lixo<span>Zero</span></h1>
@@ -52,18 +59,10 @@
                 </div>
             </div>
 
-            <div class="bloco bloco-monitoramento scroll-reveal">
-                <i class="fa-solid fa-tower-broadcast"></i>
-                <h2>Monitoramento <span>24h</span></h2>
-                <p>Acompanhe a limpeza urbana em tempo real. Nossa plataforma geolocaliza os pontos críticos de Sítio
-                    Novo do Tocantins.</p>
-            </div>
-
             <div class="bloco bloco-rotas scroll-reveal">
                 <i class="fa-solid fa-route"></i>
                 <h2>Rotas Inteligentes</h2>
-                <p>Otimização de rotas para caminhões de coleta. Redução de custos e aumento da eficiência nos bairros
-                    de Sítio Novo.</p>
+                <p>Otimização de rotas para caminhões de coleta. Redução de custos e aumento da eficiência nos bairros de Sítio Novo.</p>
             </div>
 
         </div>
@@ -87,5 +86,4 @@
     </script>
 
 </body>
-
 </html>
