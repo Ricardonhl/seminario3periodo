@@ -242,3 +242,63 @@ body {
         font-size: 13px !important;
     }
 }
+
+/* Celulares na Vertical (Telas até 480px) */
+@media (max-width: 480px) {
+    .hero-content, .container-principal { 
+        display: flex;
+        flex-direction: column; /* Coloca um embaixo do outro */
+        align-items: center;
+        text-align: center;
+        padding: 20px;
+    }
+
+    /* Diminuindo os títulos principais */
+    h1 { font-size: 28px !important; } 
+    h2 { font-size: 22px !important; }
+
+    /* Ajustando os botões para ficarem um embaixo do outro */
+    .buttons-container {
+        display: flex;
+        flex-direction: column;
+        gap: 15px; /* Espaço entre os botões */
+        width: 100%;
+    }
+
+    .btn-enviar, .btn-mapa {
+        width: 90%; /* Botões ocupam quase a largura toda */
+        margin: 0 auto;
+    }
+}
+
+/* Celulares na Horizontal (Telas entre 481px e 900px com pouca altura) */
+@media (max-height: 500px) and (orientation: landscape) {
+    /* Diminuindo textos grandes para caber na tela deitada */
+    .hero-section h1, .monitoramento-texto h1 {
+        font-size: 20px !important; 
+        margin-bottom: 5px;
+    }
+
+    .hero-section p, .box-texto p {
+        font-size: 14px !important;
+        line-height: 1.2;
+    }
+
+    /* Reduzindo o tamanho da logo ou banners */
+    .logo-lixozero {
+        width: 120px !important;
+    }
+
+    /* Organizando os botões lado a lado, mas menores */
+    .buttons-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .btn-enviar, .btn-mapa {
+        padding: 8px 15px;
+        font-size: 12px;
+    }
+}
